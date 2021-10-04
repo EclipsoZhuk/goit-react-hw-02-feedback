@@ -3,8 +3,24 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 .title {
-    margin-bottom: 40px;
     font-size: 45px;
     font-weight: 500;
+}
+
+.list {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.name {
+    text-transform: capitalize;
+}
+
+.item {
+    margin-bottom: 10px;
+    font-size: 20px;
+    list-style-type: none;
 }

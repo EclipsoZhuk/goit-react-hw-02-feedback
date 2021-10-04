@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import s from './Feedback.module.css';
 
@@ -9,6 +9,7 @@ class Feedback extends Component {
 
     static propTypes = {
         names: PropTypes.array.isRequired,
+        onClickButton: PropTypes.func.isRequired,
     };
 
     render() {
@@ -22,7 +23,9 @@ class Feedback extends Component {
                             type="button"
                             value={name}
                             className={s.buttons}
-                            // onClick={}
+                            onClick={e => {
+                                this.props.onClickButton(e);
+                            }}
                         >
                             {name}
                         </button>
