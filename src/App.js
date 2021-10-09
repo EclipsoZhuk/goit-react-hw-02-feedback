@@ -10,7 +10,7 @@ class App extends Component {
         bad: 0,
     };
 
-    onClickButton = e => {
+    onLeaveFeedback = e => {
         const currentState = e.currentTarget.value;
         this.setState(prevState => ({
             ...prevState,
@@ -24,31 +24,31 @@ class App extends Component {
             ? true
             : false;
 
-    calcTotalFeedback = () =>
+    countTotalFeedback = () =>
         Object.values(this.state).reduce((acc, total) => (acc += total));
 
-    calcPositiveFeedback = () =>
-        Math.trunc((this.state.good / this.calcTotalFeedback()) * 100);
+    countPositiveFeedbackPercentage = () =>
+        Math.trunc((this.state.good / this.countTotalFeedback()) * 100);
 
     render() {
         const buttonNames = Object.keys(this.state);
 
         return (
-            <>
+            <section>
                 <Feedback
-                    names={buttonNames}
-                    onClickButton={this.onClickButton}
+                    options={buttonNames}
+                    onLeaveFeedback={this.onLeaveFeedback}
                 />
                 {this.countZero() ? (
                     <Notification message="No feedback given" />
                 ) : (
                     <Statistics
                         stateValue={this.state}
-                        total={this.calcTotalFeedback()}
-                        totalPositive={this.calcPositiveFeedback()}
+                        total={this.countTotalFeedback()}
+                        totalPositive={this.countPositiveFeedbackPercentage()}
                     />
                 )}
-            </>
+            </section>
         );
     }
 }

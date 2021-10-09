@@ -4,12 +4,12 @@ import s from './Feedback.module.css';
 
 class Feedback extends Component {
     static defaultProps = {
-        names: [],
+        options: [],
     };
 
     static propTypes = {
-        names: PropTypes.array.isRequired,
-        onClickButton: PropTypes.func.isRequired,
+        options: PropTypes.array.isRequired,
+        onLeaveFeedback: PropTypes.func.isRequired,
     };
 
     render() {
@@ -17,17 +17,17 @@ class Feedback extends Component {
             <div className={s.feedback}>
                 <h1 className={s.title}>Please leave feedback</h1>
                 <div>
-                    {this.props.names.map(name => (
+                    {this.props.options.map(option => (
                         <button
-                            key={name}
+                            key={option}
                             type="button"
-                            value={name}
+                            value={option}
                             className={s.buttons}
                             onClick={e => {
-                                this.props.onClickButton(e);
+                                this.props.onLeaveFeedback(e);
                             }}
                         >
-                            {name}
+                            {option}
                         </button>
                     ))}
                 </div>
